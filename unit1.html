@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit 1: Water is Life</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 { color: #0077b6; font-size: 32px; text-align: center; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #555; font-size: 16px; margin-bottom: 20px; }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            background: #90e0ef;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            color: #03045e;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+        }
+        .tab-btn:hover { background: #48cae4; }
+        .tab-btn.active { background: #0077b6; color: white; }
+
+        .content-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 850px;
+            margin: 0 auto;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            min-height: 400px;
+        }
+
+        .section { display: none; }
+        .section.active { display: block; }
+
+        .reading-text {
+            font-size: 17px;
+            line-height: 1.8;
+            color: #333;
+            text-align: justify;
+        }
+        .reading-text h2 {
+            color: #0077b6;
+            font-size: 24px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .reading-text p { margin-bottom: 15px; }
+
+        .vocab-item {
+            background: #f0f8ff;
+            border-left: 5px solid #0077b6;
+            padding: 12px 18px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+        }
+        .vocab-item .word {
+            font-size: 20px;
+            font-weight: bold;
+            color: #03045e;
+        }
+        .vocab-item .meaning {
+            font-size: 16px;
+            color: #d62828;
+            margin: 3px 0;
+        }
+        .vocab-item .sentence {
+            font-size: 15px;
+            color: #555;
+            font-style: italic;
+        }
+
+        .grammar-rule {
+            background: #fff9c4;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .grammar-rule h3 { color: #f57c00; margin-bottom: 10px; }
+        .grammar-rule p { font-size: 16px; line-height: 1.6; margin-bottom: 8px; }
+        .grammar-rule .example {
+            background: white;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 8px 0;
+            font-size: 15px;
+            border-left: 4px solid #4caf50;
+        }
+        .grammar-rule .example b { color: #2e7d32; }
+
+        .quiz-question {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+        }
+        .quiz-question .q-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 12px;
+        }
+        .quiz-options { display: flex; flex-wrap: wrap; gap: 10px; }
+        .quiz-option {
+            background: #ffd93d;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        .quiz-option:hover { background: #ffc107; }
+        .quiz-option.correct { background: #4caf50; color: white; }
+        .quiz-option.wrong { background: #f44336; color: white; }
+
+        .feedback {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+
+        .back-btn {
+            display: block;
+            margin: 20px auto;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .back-btn:hover { background: #ff4757; }
+    </style>
+</head>
+<body>
+    <h1>📘 Unit 1: Water is Life</h1>
+    <p class="subtitle">Std 7 English (GSEB) — Reading, Vocabulary, Grammar, Quiz</p>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('reading', this)">📖 Reading</button>
+        <button class="tab-btn" onclick="showTab('vocab', this)">🔤 Vocabulary</button>
+        <button class="tab-btn" onclick="showTab('grammar', this)">📝 Grammar</button>
+        <button class="tab-btn" onclick="showTab('quiz', this)">❓ Quiz</button>
+    </div>
+
+    <div class="content-box">
+        <!-- READING -->
+        <div class="section active" id="reading">
+            <div class="reading-text">
+                <h2>Water is Life</h2>
+                <p>Water is one of the most important things on the Earth. All living beings – humans, animals, and plants need water to live. We use water every day for drinking, cooking, bathing, cleaning etc.</p>
+                <p>The primary sources of water are rainwater, surface water (rivers, ponds, lakes, glacier, oceans etc.) and groundwater. We get water from water tanks, dams and hand pumps. Also salty sea water is converted into drinking water at some places.</p>
+                <p>The farmers need water to grow crops. Industries use water to make goods and to keep machines cool. There are so many water activities like swimming, boating, rafting, pool games etc.</p>
+                <p>Many creatures like fish, frogs, and whales live in water. Water also helps keep the weather cool. Water is essential for trees and plants.</p>
+                <p><b>Moral:</b> Water is a necessity! Water is life! Water is the soul. Saving it is our goal.</p>
+            </div>
+        </div>
+
+        <!-- VOCABULARY -->
+        <div class="section" id="vocab">
+            <div class="vocab-item">
+                <div class="word">conservation</div>
+                <div class="meaning">સંરક્ષણ</div>
+                <div class="sentence">Water conservation is important for our future.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">drought</div>
+                <div class="meaning">દુષ્કાળ</div>
+                <div class="sentence">The village faced a terrible drought last year.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">glacier</div>
+                <div class="meaning">હિમનદી</div>
+                <div class="sentence">A glacier is a large mass of ice.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">underground</div>
+                <div class="meaning">ભૂગર્ભ</div>
+                <div class="sentence">They built an underground tank to store rainwater.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">necessity</div>
+                <div class="meaning">જરૂરિયાત</div>
+                <div class="sentence">Water is a basic necessity of life.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">converted</div>
+                <div class="meaning">રૂપાંતર કર્યું</div>
+                <div class="sentence">Salty sea water is converted into drinking water.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">terrible</div>
+                <div class="meaning">ભયંકર</div>
+                <div class="sentence">The drought was a terrible disaster.</div>
+            </div>
+            <div class="vocab-item">
+                <div class="word">plenty of</div>
+                <div class="meaning">પુષ્કળ</div>
+                <div class="sentence">There was plenty of water in the underground tank.</div>
+            </div>
+        </div>
+
+        <!-- GRAMMAR -->
+        <div class="section" id="grammar">
+            <div class="grammar-rule">
+                <h3>🔗 Conjunctions (and, but, or, because, so, otherwise)</h3>
+                <p>Conjunctions are words that join two sentences or ideas together.</p>
+
+                <div class="example"><b>and</b> — joins similar ideas.<br>👉 She is tired <b>and</b> hungry.</div>
+                <div class="example"><b>but</b> — joins opposite ideas.<br>👉 He worked hard <b>but</b> did not pass.</div>
+                <div class="example"><b>or</b> — gives a choice.<br>👉 Would you like tea <b>or</b> coffee?</div>
+                <div class="example"><b>because</b> — gives a reason.<br>👉 I didn't go to school <b>because</b> I was sick.</div>
+                <div class="example"><b>so</b> — shows result.<br>👉 He worked hard, <b>so</b> he passed the exam.</div>
+                <div class="example"><b>otherwise</b> — shows what happens if not.<br>👉 Hurry up, <b>otherwise</b> we will miss the bus.</div>
+            </div>
+
+            <div class="grammar-rule" style="background:#e8f5e9;">
+                <h3>✏️ Practice: Fill in the blanks</h3>
+                <p>1. She is tired _____ she finished all her homework.</p>
+                <p>2. Would you like tea _____ coffee?</p>
+                <p>3. He worked hard _____ he passed the exam.</p>
+                <p>4. I didn't go to school _____ I was sick.</p>
+                <p>5. He took a stick _____ started walking.</p>
+                <p style="margin-top:10px; color:#2e7d32;"><b>Answers:</b> 1. but, 2. or, 3. so, 4. because, 5. and</p>
+            </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="section" id="quiz">
+            <div id="quiz-container"></div>
+            <div class="feedback" id="quiz-feedback" style="text-align:center; margin-top:15px;"></div>
+        </div>
+    </div>
+
+    <button class="back-btn" onclick="window.location.href='index.html'">🔙 Back to Home</button>
+
+    <script>
+        // Tabs
+        function showTab(tabId, btn) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // Quiz Data
+        const quizData = [
+            {
+                q: "Water is very important for life.",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                q: "Which of these is a source of water?",
+                options: ["Rivers", "Rocks", "Sand", "Wood"],
+                answer: "Rivers"
+            },
+            {
+                q: "Farmers need water to _____.",
+                options: ["grow crops", "build houses", "make clothes", "drive cars"],
+                answer: "grow crops"
+            },
+            {
+                q: "Which animal lives in water?",
+                options: ["Fish", "Lion", "Elephant", "Camel"],
+                answer: "Fish"
+            },
+            {
+                q: "Industries use water to _____.",
+                options: ["keep machines cool", "paint walls", "grow trees", "cook food"],
+                answer: "keep machines cool"
+            },
+            {
+                q: "Which of these is a water activity?",
+                options: ["Swimming", "Running", "Jumping", "Reading"],
+                answer: "Swimming"
+            },
+            {
+                q: "Turning off taps is a good habit to save water.",
+                options: ["True", "False"],
+                answer: "True"
+            },
+            {
+                q: "Water helps keep the weather _____.",
+                options: ["cool", "hot", "dry", "windy"],
+                answer: "cool"
+            },
+            {
+                q: "Salty sea water is converted into _____ water.",
+                options: ["drinking", "dirty", "colored", "hot"],
+                answer: "drinking"
+            },
+            {
+                q: "What is the moral of the story 'Water is Life'?",
+                options: ["Water is life, save it", "Water is useless", "Water is dangerous", "Water is unlimited"],
+                answer: "Water is life, save it"
+            }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            if (currentQ >= quizData.length) {
+                container.innerHTML = `<h2 style="text-align:center; color:#0077b6;">🎉 Quiz Complete!</h2>
+                    <p style="text-align:center; font-size:22px; margin-top:15px;">Your Score: <b>${score} / ${quizData.length}</b></p>
+                    <p style="text-align:center; margin-top:10px; color:#555;">${score >= 8 ? 'Excellent! 🌟' : score >= 5 ? 'Good job! 👍' : 'Try again! 💪'}</p>
+                    <button class="back-btn" onclick="restartQuiz()">🔄 Restart Quiz</button>`;
+                return;
+            }
+
+            const q = quizData[currentQ];
+            container.innerHTML = `
+                <div class="quiz-question">
+                    <div class="q-text">Q${currentQ + 1}. ${q.q}</div>
+                    <div class="quiz-options" id="options"></div>
+                    <div class="feedback" id="q-feedback"></div>
+                </div>
+                <p style="text-align:center; color:#555;">Question ${currentQ + 1} of ${quizData.length}</p>
+            `;
+
+            const optionsDiv = document.getElementById('options');
+            q.options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-option';
+                btn.textContent = opt;
+                btn.onclick = () => checkAnswer(btn, opt, q.answer);
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function checkAnswer(btn, selected, correct) {
+            const feedback = document.getElementById('q-feedback');
+            document.querySelectorAll('.quiz-option').forEach(b => b.disabled = true);
+
+            if (selected === correct) {
+                btn.classList.add('correct');
+                feedback.style.color = '#4caf50';
+                feedback.textContent = '✅ Sahi jawab!';
+                score++;
+            } else {
+                btn.classList.add('wrong');
+                feedback.style.color = '#f44336';
+                feedback.textContent = '❌ Sahi jawab: ' + correct;
+                document.querySelectorAll('.quiz-option').forEach(b => {
+                    if (b.textContent === correct) b.classList.add('correct');
+                });
+            }
+
+            setTimeout(() => {
+                currentQ++;
+                loadQuiz();
+            }, 1500);
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            loadQuiz();
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>

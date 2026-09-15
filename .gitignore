@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+out/
+*.exe
+*.msi
+*.dmg
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

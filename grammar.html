@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grammar Learning</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #fff3e0);
+            min-height: 100vh;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 { color: #ff6b6b; font-size: 34px; margin-bottom: 10px; }
+        .subtitle { color: #555; font-size: 16px; margin-bottom: 20px; }
+
+        .rule-box {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .rule-title {
+            font-size: 26px;
+            color: #4ecdc4;
+            margin-bottom: 10px;
+        }
+
+        .rule-desc {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .examples {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .example-card {
+            background: #fff9c4;
+            border-radius: 15px;
+            padding: 15px;
+            width: 180px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .example-card .word {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-top: 8px;
+        }
+
+        .example-card .emoji {
+            font-size: 50px;
+        }
+
+        .btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 17px;
+            font-weight: bold;
+            border-radius: 25px;
+            cursor: pointer;
+            margin: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .btn:hover { background: #ff4757; }
+        .btn.green { background: #4ecdc4; }
+        .btn.green:hover { background: #38b2ac; }
+        .btn.blue { background: #42a5f5; }
+        .btn.blue:hover { background: #1e88e5; }
+
+        .quiz-box {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            max-width: 700px;
+            margin: 20px auto;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .quiz-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quiz-option {
+            background: #ffd93d;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s;
+        }
+
+        .quiz-option:hover { transform: scale(1.05); background: #ffc107; }
+        .quiz-option.correct { background: #4caf50; color: white; }
+        .quiz-option.wrong { background: #f44336; color: white; }
+
+        .feedback {
+            font-size: 22px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 Grammar Learning</h1>
+    <p class="subtitle">A, An, The, This, That, Is, Are shikho!</p>
+
+    <!-- Rule 1: A vs An -->
+    <div class="rule-box">
+        <div class="rule-title">🔤 A vs An</div>
+        <div class="rule-desc">
+            <b>"A"</b> — consonant (k, g, b, c, d, ...) pehla vaparay<br>
+            <b>"An"</b> — vowel (a, e, i, o, u) pehla vaparay
+        </div>
+        <div class="examples">
+            <div class="example-card">
+                <div class="emoji">🍎</div>
+                <div class="word">An apple</div>
+            </div>
+            <div class="example-card">
+                <div class="emoji">🐱</div>
+                <div class="word">A cat</div>
+            </div>
+            <div class="example-card">
+                <div class="emoji">🐘</div>
+                <div class="word">An elephant</div>
+            </div>
+            <div class="example-card">
+                <div class="emoji">⚽</div>
+                <div class="word">A ball</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rule 2: This vs That -->
+    <div class="rule-box">
+        <div class="rule-title">👉 This vs That</div>
+        <div class="rule-desc">
+            <b>"This"</b> — najik ni vastu mate<br>
+            <b>"That"</b> — dur ni vastu mate
+        </div>
+        <div class="examples">
+            <div class="example-card">
+                <div class="emoji">📕</div>
+                <div class="word">This is a book</div>
+            </div>
+            <div class="example-card">
+                <div class="emoji">🌳</div>
+                <div class="word">That is a tree</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rule 3: Is vs Are -->
+    <div class="rule-box">
+        <div class="rule-title">✅ Is vs Are</div>
+        <div class="rule-desc">
+            <b>"Is"</b> — ek vastu mate (He is, She is, It is)<br>
+            <b>"Are"</b> — ghana vastu mate (They are, We are)
+        </div>
+        <div class="examples">
+            <div class="example-card">
+                <div class="emoji">👦</div>
+                <div class="word">He is a boy</div>
+            </div>
+            <div class="example-card">
+                <div class="emoji">👧👦</div>
+                <div class="word">They are kids</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quiz Section -->
+    <div class="quiz-box">
+        <div class="quiz-question" id="question">Loading...</div>
+        <div class="quiz-options" id="options"></div>
+        <div class="feedback" id="feedback"></div>
+    </div>
+
+    <button class="btn green" onclick="nextQuestion()">➡️ Next Question</button>
+    <button class="btn blue" onclick="window.location.href='index.html'">🔙 Back to Tracing</button>
+
+    <script src="grammar.js"></script>
+</body>
+</html>

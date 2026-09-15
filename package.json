@@ -1,0 +1,43 @@
+{
+  "name": "kids-activity-app",
+  "version": "1.0.0",
+  "description": "Std 7 English Learning App for Kids",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "keywords": [
+    "kids",
+    "learning",
+    "english",
+    "std7",
+    "gseb"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^44.3.0",
+    "electron-builder": "^24.9.1"
+  },
+  "build": {
+    "appId": "com.kids.std7english",
+    "productName": "Std 7 English",
+    "win": {
+      "icon": "icon.png",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Std 7 English"
+    },
+    "files": [
+      "**/*",
+      "!dist/**",
+      "!node_modules/.cache/**"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kids Activity App</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Comic Sans MS', Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #f0f8ff, #ffe4e1);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        h1 { color: #ff6b6b; font-size: 42px; margin-bottom: 10px; }
+        p { color: #555; font-size: 20px; margin-bottom: 30px; }
+        .menu-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 35px;
+            cursor: pointer;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            min-width: 320px;
+        }
+        .menu-btn:hover { background: #ff4757; transform: scale(1.05); }
+        .menu-btn.blue { background: #42a5f5; }
+        .menu-btn.blue:hover { background: #1e88e5; }
+        .menu-btn.purple { background: #9c27b0; }
+        .menu-btn.purple:hover { background: #7b1fa2; }
+        .menu-btn.green { background: #4ecdc4; }
+        .menu-btn.green:hover { background: #38b2ac; }
+    </style>
+</head>
+<body>
+    <h1>🎨 Kids Learning App</h1>
+    <p>Std 7 English — Learn, Practice, Play!</p>
+
+    <button class="menu-btn" onclick="window.location.href='app.html'">🚀 Start Learning App</button>
+    <button class="menu-btn green" onclick="window.location.href='app.html'">🎨 Tracing Activity</button>
+    <button class="menu-btn blue" onclick="window.location.href='app.html'">📚 Grammar Learning</button>
+    <button class="menu-btn purple" onclick="window.location.href='app.html'">📘 Units & Supplementary</button>
+</body>
+</html>

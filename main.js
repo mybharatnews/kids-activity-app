@@ -1,6 +1,16 @@
 const { app, BrowserWindow, session, shell } = require('electron');
 const path = require('path');
 
+// ===== GPU COMPLETELY DISABLE (Errors fix) =====
+app.disableHardwareAcceleration();
+app.commandLine.appendSwitch('disable-gpu');
+app.commandLine.appendSwitch('disable-software-rasterizer');
+app.commandLine.appendSwitch('disable-gpu-compositing');
+app.commandLine.appendSwitch('disable-dev-shm-usage');
+app.commandLine.appendSwitch('no-sandbox');
+app.commandLine.appendSwitch('use-gl', 'swiftshader');
+app.commandLine.appendSwitch('in-process-gpu');
+
 // ===== SECURITY: Security warnings disable =====
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 
@@ -18,13 +28,6 @@ if (!gotTheLock) {
         }
     });
 }
-
-// ===== SECURITY: GPU cache disable (errors na aave) =====
-app.commandLine.appendSwitch('disable-gpu');
-app.commandLine.appendSwitch('disable-software-rasterizer');
-app.commandLine.appendSwitch('disable-gpu-compositing');
-app.commandLine.appendSwitch('disable-dev-shm-usage');
-app.commandLine.appendSwitch('no-sandbox');
 
 // ===== SECURITY: External links block =====
 app.on('web-contents-created', (event, contents) => {
@@ -60,7 +63,8 @@ app.on('ready', () => {
                 'Content-Security-Policy': [
                     "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: file:; " +
                     "script-src 'self' 'unsafe-inline' 'unsafe-eval'; " +
-                    "style-src 'self' 'unsafe-inline'; " +
+                    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+                    "font-src 'self' https://fonts.gstatic.com; " +
                     "img-src 'self' data: file:; " +
                     "connect-src 'self'"
                 ]
@@ -83,7 +87,7 @@ function createWindow() {
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            devTools: false,        // Production ma DevTools disable
+            devTools: true,         // ⚠️ Development ma true, production ma false karo
             webSecurity: true,      // Web security enable
             allowRunningInsecureContent: false,
             experimentalFeatures: false,
@@ -100,6 +104,13 @@ function createWindow() {
     win.webContents.on('did-finish-load', () => {
         win.webContents.setZoomFactor(1);
         win.webContents.setVisualZoomLevelLimits(1, 1);
+        
+        // Mouse wheel + Ctrl thi zoom disable
+        win.webContents.executeJavaScript(`
+            document.addEventListener('wheel', (e) => {
+                if (e.ctrlKey) e.preventDefault();
+            }, { passive: false });
+        `);
     });
 
     // Zoom shortcuts disable
@@ -122,7 +133,7 @@ function createWindow() {
         }
     });
 
-    // Load app.html
+    // ✅ MAIN APP LOAD KARO (app.html)
     win.loadFile('app.html');
 
     // Ready thay tyare show karo
@@ -164,6 +175,7 @@ app.on('browser-window-created', (event, window) => {
 // ===== ERROR HANDLING =====
 process.on('uncaughtException', (error) => {
     console.error('Uncaught Exception:', error);
+    if (error.code === 'EPIPE') return;
 });
 
 process.on('unhandledRejection', (reason, promise) => {

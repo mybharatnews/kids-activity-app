@@ -1,43 +1,44 @@
 {
   "name": "kids-activity-app",
   "version": "1.0.0",
-  "description": "Std 7 English Learning App for Kids",
+  "description": "Std 7 English Learning App for Dravy — Learn, Practice, Play!",
+  "author": "Dravy's Dad",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
     "build": "electron-builder"
   },
-  "keywords": [
-    "kids",
-    "learning",
-    "english",
-    "std7",
-    "gseb"
-  ],
-  "author": "Your Name",
-  "license": "MIT",
   "devDependencies": {
-    "electron": "^44.3.0",
-    "electron-builder": "^24.9.1"
+    "electron": "^28.0.0",
+    "electron-builder": "^24.13.3"
   },
   "build": {
-    "appId": "com.kids.std7english",
-    "productName": "Std 7 English",
+    "appId": "com.dravy.englishapp",
+    "productName": "Dravy's English App",
+    "directories": {
+      "output": "dist"
+    },
     "win": {
-      "icon": "icon.png",
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "icon.png"
     },
     "nsis": {
       "oneClick": false,
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Std 7 English"
+      "shortcutName": "Dravy's English App"
     },
     "files": [
-      "**/*",
-      "!dist/**",
-      "!node_modules/.cache/**"
+      "main.js",
+      "app.html",
+      "index.html",
+      "data.js",
+      "grammar-data-part1.js",
+      "grammar-data-part2.js",
+      "swadhyay-data.js",
+      "icon.png",
+      "package.json"
     ]
   }
 }

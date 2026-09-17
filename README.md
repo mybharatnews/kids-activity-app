@@ -1,27 +1,17 @@
-# Std 7 English Learning App
+# Dravy's English Learning App
 
-Aa ek interactive app chhe jema Std 7 na kids English shikhi shakay chhe.
+Std 7 English Learning App for Dravy — Learn, Practice, Play!
 
 ## Features
-
-- 📝 Grammar Master (70+ topics)
-- 🎨 Tracing Activity
-- ⭐ Favorites
-- 🏆 Badges & Achievements
+- 📖 Reading
+- 🔤 Vocabulary
+- ✍️ Swadhyay Pothi (Units 1-4)
+- ❓ Quiz
 - 🌙 Dark Mode
-- 🔊 Text-to-Speech
-- ❓ Quiz with Confetti
-- 🎯 Match Game
-- 🔍 Search Topics
-- 📊 Progress Tracking
 
 ## Tech Stack
-
 - Electron
-- HTML, CSS, JavaScript
+- HTML/CSS/JavaScript
 
-## Installation
-
-```bash
-npm install
-npx electron .
+## Author
+Dravy's Dad

@@ -1,7 +1,7 @@
 let grammarData = [
     {
         id: 1,
-        title: "English Basics",
+        title: "Basic English",
         subtitle: "Alphabet, Vowels, Consonants, Sentence Structure",
         icon: "🔤",
         color: "#0077b6",
@@ -95,7 +95,7 @@ let grammarData = [
     },
     {
         id: 2,
-        title: "One and Many",
+        title: "Singular - Plural",
         subtitle: "Ek vachan ane Bahu vachan",
         icon: "1️⃣",
         color: "#009688",
@@ -187,7 +187,7 @@ let grammarData = [
     },
         {
         id: 3,
-        title: "Learning Articles",
+        title: "Articles (A, An, The)",
         subtitle: "Indefinite ane Definite Articles",
         icon: "📝",
         color: "#e91e63",
@@ -334,7 +334,7 @@ let grammarData = [
 
     {
         id: 4,
-        title: "All About Words",
+        title: "Parts of Speech",
         subtitle: "Noun, Pronoun, Verb, Adjective, Adverb, Conjunction, Preposition, Interjection",
         icon: "🧩",
         color: "#9c27b0",
@@ -452,7 +452,7 @@ let grammarData = [
     },
         {
         id: 5,
-        title: "Being Words",
+        title: "To be (am/is/are, was/were, will be)",
         subtitle: "Present, Past, Future",
         icon: "🔄",
         color: "#2196f3",
@@ -594,7 +594,7 @@ let grammarData = [
     },
         {
         id: 6,
-        title: "Having Words",
+        title: "To have (have/has, had, will have)",
         subtitle: "Present, Past, Future",
         icon: "✋",
         color: "#ff9800",
@@ -715,7 +715,7 @@ let grammarData = [
     },
             {
         id: 7,
-        title: "There in Sentences",
+        title: "Use of There",
         subtitle: "There is / There are / There was / There were / There will be",
         icon: "📍",
         color: "#00bcd4",
@@ -831,7 +831,7 @@ let grammarData = [
     },
         {
         id: 8,
-        title: "Asking Questions",
+        title: "Question Words",
         subtitle: "Who, What, Whom, Which, Whose, Why, When, Where, How",
         icon: "❓",
         color: "#ff5722",
@@ -967,7 +967,7 @@ let grammarData = [
     },
         {
         id: 9,
-        title: "Daily Actions",
+        title: "Simple Present Tense",
         subtitle: "Daily actions, Universal truths, Habits",
         icon: "🌞",
         color: "#4caf50",
@@ -1098,7 +1098,7 @@ let grammarData = [
     },
         {
         id: 10,
-        title: "Past Actions",
+        title: "Simple Past Tense",
         subtitle: "Past actions, completed actions",
         icon: "⏪",
         color: "#795548",
@@ -1272,7 +1272,7 @@ let grammarData = [
     },
         {
         id: 11,
-        title: "Future Actions",
+        title: "Simple Future Tense",
         subtitle: "Future actions, planned actions",
         icon: "⏩",
         color: "#3f51b5",
@@ -1440,7 +1440,7 @@ let grammarData = [
     },
         {
         id: 12,
-        title: "Adding -ing",
+        title: "Rule of ing",
         subtitle: "V1 + ing — Spelling Rules",
         icon: "➕",
         color: "#8bc34a",
@@ -1611,7 +1611,7 @@ let grammarData = [
     },
         {
         id: 13,
-        title: "Happening Now",
+        title: "Continuous Present Tense",
         subtitle: "am/is/are + V1 ing — Present Continuous",
         icon: "🔄",
         color: "#00acc1",
@@ -1779,7 +1779,7 @@ let grammarData = [
 
         {
         id: 14,
-        title: "Was Happening",
+        title: "Continuous Past Tense",
         subtitle: "was/were + V1 ing — Past Continuous",
         icon: "⏪",
         color: "#7e57c2",
@@ -1948,7 +1948,7 @@ let grammarData = [
     },
         {
         id: 15,
-        title: "Will Be Happening",
+        title: "Continuous Future Tense",
         subtitle: "will be + V1 ing — Future Continuous",
         icon: "⏩",
         color: "#26a69a",
@@ -2116,7 +2116,7 @@ let grammarData = [
     },
         {
         id: 16,
-        title: "Just Finished",
+        title: "Present Perfect Tense",
         subtitle: "have/has + V3 — Present Perfect",
         icon: "✅",
         color: "#66bb6a",
@@ -2297,7 +2297,7 @@ let grammarData = [
 
         {
         id: 17,
-        title: "Already Finished",
+        title: "Past Perfect Tense",
         subtitle: "had + V3 — Past Perfect",
         icon: "⏮️",
         color: "#ef5350",
@@ -2482,7 +2482,7 @@ let grammarData = [
     },
         {
         id: 18,
-        title: "Will Have Finished",
+        title: "Future Perfect Tense",
         subtitle: "will have + V3 — Future Perfect",
         icon: "🔮",
         color: "#ab47bc",
@@ -2661,7 +2661,7 @@ let grammarData = [
     },
         {
         id: 19,
-        title: "Still Happening",
+        title: "Present Perfect Continuous Tense",
         subtitle: "have/has been + V1 ing — Present Perfect Continuous",
         icon: "🔄",
         color: "#42a5f5",
@@ -2835,7 +2835,7 @@ let grammarData = [
     },
         {
         id: 20,
-        title: "Was Still Happening",
+        title: "Past Perfect Continuous Tense",
         subtitle: "had been + V1 ing — Past Perfect Continuous",
         icon: "⏮️",
         color: "#ff7043",
@@ -3002,7 +3002,7 @@ let grammarData = [
 
         {
         id: 21,
-        title: "Will Still Be Happening",
+        title: "Future Perfect Continuous Tense",
         subtitle: "will have been + V1 ing — Future Perfect Continuous",
         icon: "🔮",
         color: "#5c6bc0",
@@ -3174,7 +3174,7 @@ let grammarData = [
     },
         {
         id: 22,
-        title: "Wishing and Wanting",
+        title: "Use of Want",
         subtitle: "Want / Wants / Wanted — Ichchha darshavva",
         icon: "🙏",
         color: "#ffa726",
@@ -3387,7 +3387,7 @@ let grammarData = [
     },
         {
         id: 23,
-        title: "Must Do Words",
+        title: "Has to, Have to, Had to, Will have to",
         subtitle: "Obligation — Karvu pade chhe",
         icon: "💪",
         color: "#8d6e63",
@@ -3562,7 +3562,7 @@ let grammarData = [
 
         {
         id: 24,
-        title: "Command Sentences",
+        title: "Imperative Sentences",
         subtitle: "Order, Command, Request — Aadesh ane Vinanti",
         icon: "📢",
         color: "#ef6c00",
@@ -3759,7 +3759,7 @@ let grammarData = [
 
         {
         id: 25,
-        title: "Polite Wishes",
+        title: "Would like to",
         subtitle: "Ichchha ane Pasand darshavva — Wish / Desire",
         icon: "💭",
         color: "#c2185b",
@@ -3925,7 +3925,7 @@ let grammarData = [
 
         {
         id: 26,
-        title: "Allowing and Suggesting",
+        title: "Let & Let's",
         subtitle: "Permission ane Suggestion — Parvangi ane Suchan",
         icon: "🤝",
         color: "#00897b",
@@ -4099,7 +4099,7 @@ let grammarData = [
        
         {
         id: 27,
-        title: "Comparing Things",
+        title: "Degree of Comparison",
         subtitle: "Positive, Comparative, Superlative — Tulna na trane sthar",
         icon: "📊",
         color: "#f57c00",
@@ -4285,7 +4285,7 @@ let grammarData = [
 
         {
         id: 28,
-        title: "Helping Verbs",
+        title: "Modal Verbs (Can, Could, Should, Would, May, Might, Must)",
         subtitle: "Modal Auxiliary Verbs — Shakti, Salah, Faraj",
         icon: "🔑",
         color: "#5e35b1",
@@ -4470,7 +4470,7 @@ let grammarData = [
     },
         {
         id: 29,
-        title: "Doer and Action",
+        title: "Active - Passive Voice",
         subtitle: "Karta thi Karma — Voice no Badlav",
         icon: "🔄",
         color: "#d32f2f",
@@ -4666,7 +4666,7 @@ let grammarData = [
 
         {
         id: 30,
-        title: "Days, Months, Numbers",
+        title: "Spelling Club",
         subtitle: "Days, Months, Numbers, Ordinals — Samay ane Sankhya na Shabdo",
         icon: "📅",
         color: "#3949ab",
@@ -4833,7 +4833,7 @@ let grammarData = [
     },
         {
         id: 31,
-        title: "Silent Letters",
+        title: "Rules of Silent Letters",
         subtitle: "Mook Aksharo — Uchchar na thata Akshar",
         icon: "🔇",
         color: "#616161",
@@ -5058,7 +5058,7 @@ let grammarData = [
 
         {
         id: 32,
-        title: "Sound Rules",
+        title: "Rules of Pronunciation",
         subtitle: "Y, TH, Sion, X, E — Uchchar na Niyamo",
         icon: "🔊",
         color: "#00838f",
@@ -5246,7 +5246,7 @@ let grammarData = [
     },
         {
         id: 33,
-        title: "Interview Skills",
+        title: "Interview Preparation",
         subtitle: "Self Introduction ane Common Questions — Mulaqat ni Tayari",
         icon: "💼",
         color: "#37474f",

@@ -23,3 +23,22 @@ Std 7 English Learning App for Dravy — Learn, Practice, Play!
 ## 👨‍👦 Author
 
 Dravy's Dad
+=======
+# Dravy's English Learning App
+
+Std 7 English Learning App for Dravy — Learn, Practice, Play!
+
+## Features
+- 📖 Reading
+- 🔤 Vocabulary
+- ✍️ Swadhyay Pothi (Units 1-4)
+- ❓ Quiz
+- 🌙 Dark Mode
+
+## Tech Stack
+- Electron
+- HTML/CSS/JavaScript
+
+## Author
+Dravy's Dad
+>>>>>>> 2b8f3307eb938f4b580e158f7e8bb4038127051d

@@ -1,4 +1,4 @@
-const swadhyayData = {
+const studyNotesData = {
   1: {
     unitTitle: "Study Notes: Water is Life",
     sections: [

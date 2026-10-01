@@ -1306,7 +1306,7 @@
                     <button class="tab-btn active" onclick="showTab('reading', this)">📖 Reading</button>
                     <button class="tab-btn" onclick="showTab('vocab', this)">🔤 Vocabulary</button>
                     ${data.grammar ? `<button class="tab-btn" onclick="showTab('grammar', this)">📝 Grammar</button>` : ''}
-                    <button class="tab-btn" onclick="showTab('swadhyay', this)">✍️ Study Notes</button>
+                    <button class="tab-btn" onclick="showTab('study-notes', this)">✍️ Study Notes</button>
                     <button class="tab-btn" onclick="showTab('quiz', this)">❓ Quiz</button>
                 </div>`;
             html += `<div class="section active" id="reading"><div class="reading-text">`;
@@ -1337,15 +1337,15 @@
                 html += `<p style="margin-top:10px; color:#2e7d32;"><b>Answers:</b> ${data.grammar.practice.map(p => p.a).join(', ')}</p>
                     </div></div>`;
             }
-            html += `<div class="section" id="swadhyay">
-                <div id="swadhyay-content"></div>
+            html += `<div class="section" id="study-notes">
+                <div id="study-notes-content"></div>
             </div>`;
             html += `<div class="section" id="quiz"><div id="unit-quiz-container"></div></div>`;
             html += `</div>`;
             container.innerHTML = html;
             setTimeout(() => {
                 initQuiz(data.quiz, 'unit-quiz-container');
-                loadSwadhyayData(data.id);
+                loadStudyNotesData(data.id);
             }, 50);
         }
 
@@ -1355,23 +1355,24 @@
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
             
-            if (tabId === 'swadhyay') {
+            // Study Notes tab click thay tyare data load karo
+            if (tabId === 'study-notes') {
                 const currentUnit = allPages[currentIndex]?.data?.id;
-                if (currentUnit) loadSwadhyayData(currentUnit);
+                if (currentUnit) loadStudyNotesData(currentUnit);
             }
         }
 
         // ===== STUDY NOTES DATA LOAD =====
-        function loadSwadhyayData(unitNumber) {
-            const container = document.getElementById('swadhyay-content');
+        function loadStudyNotesData(unitNumber) {
+            const container = document.getElementById('study-notes-content');
             if (!container) return;
             
-            if (typeof swadhyayData === 'undefined') {
-                container.innerHTML = `<p style="text-align:center; color:var(--text-light); padding:20px;">Study Notes data load nathi thayu. (swadhyay-data.js file check karo)</p>`;
+            if (typeof studyNotesData === 'undefined') {
+                container.innerHTML = `<p style="text-align:center; color:var(--text-light); padding:20px;">Study Notes data load nathi thayu. (study-notes-data.js file check karo)</p>`;
                 return;
             }
             
-            const data = swadhyayData[unitNumber];
+            const data = studyNotesData[unitNumber];
 
             if (!data || !data.sections || data.sections.length === 0) {
                 container.innerHTML = `

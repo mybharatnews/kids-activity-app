@@ -1,6 +1,10 @@
 const { app, BrowserWindow, session, shell } = require('electron');
 const path = require('path');
 
+// ===== Cache folder set (permission fix) =====
+app.setPath('userData', path.join(__dirname, 'userData'));
+app.setPath('cache', path.join(__dirname, 'cache'));
+
 // ===== GPU COMPLETELY DISABLE (Errors fix) =====
 app.disableHardwareAcceleration();
 app.commandLine.appendSwitch('disable-gpu');

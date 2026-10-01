@@ -883,10 +883,10 @@
                 { type: 'badges', title: 'Badges' }
             ];
             if (appData && appData.units) {
-                appData.units.forEach(u => allPages.push({ type: 'unit', data: u, title: 'Unit ' + u.id + ': ' + u.title }));
+                appData.units.forEach(u => allPages.push({ type: 'unit', data: u, title: u.title }));
             }
             if (appData && appData.supplementary) {
-                appData.supplementary.forEach(s => allPages.push({ type: 'supp', data: s, title: 'Supp ' + s.id + ': ' + s.title }));
+                appData.supplementary.forEach(s => allPages.push({ type: 'supp', data: s, title: s.title }));
             }
         }
         function buildSidebar() {
@@ -898,7 +898,7 @@
                 appData.units.forEach((u, i) => {
                     const btn = document.createElement('button');
                     btn.className = 'menu-item';
-                    btn.textContent = `Unit ${u.id}: ${u.title}`;
+                    btn.textContent = u.title;
                     btn.onclick = () => { currentIndex = 5 + i; render(); setActive(btn); };
                     unitsMenu.appendChild(btn);
                 });
@@ -907,7 +907,7 @@
                 appData.supplementary.forEach((s, i) => {
                     const btn = document.createElement('button');
                     btn.className = 'menu-item';
-                    btn.textContent = `Supp ${s.id}: ${s.title}`;
+                    btn.textContent = s.title;
                     btn.onclick = () => { currentIndex = 5 + (appData.units ? appData.units.length : 0) + i; render(); setActive(btn); };
                     suppMenu.appendChild(btn);
                 });
@@ -1015,6 +1015,26 @@
                             <div class="label">Supplementary</div>
                             <div class="number">${suppCount}</div>
                         </div>
+                    </div>
+                    
+                    <!-- ✅ DISCLAIMER -->
+                    <div style="
+                        background: #fff9c4;
+                        border-left: 4px solid #f57c00;
+                        padding: 15px;
+                        margin: 25px auto 10px;
+                        max-width: 700px;
+                        border-radius: 8px;
+                        font-size: 12px;
+                        color: #666;
+                        text-align: left;
+                        line-height: 1.6;
+                    ">
+                        <strong>⚠️ Disclaimer:</strong> Aa ek private study aid chhe, 
+                        GSEB athva GSSTB dwara official nathi. Tamara prashno official 
+                        GSSTB textbook par aadharit chhe. Tamara jawab ane explanation 
+                        original chhe. Aa app fakt shikshan na hetu mate free of cost 
+                        share karvama aavi chhe.
                     </div>
                 </div>`;
         }
@@ -1286,7 +1306,7 @@
                     <button class="tab-btn active" onclick="showTab('reading', this)">📖 Reading</button>
                     <button class="tab-btn" onclick="showTab('vocab', this)">🔤 Vocabulary</button>
                     ${data.grammar ? `<button class="tab-btn" onclick="showTab('grammar', this)">📝 Grammar</button>` : ''}
-                    <button class="tab-btn" onclick="showTab('swadhyay', this)">✍️ Swadhyay Pothi</button>
+                    <button class="tab-btn" onclick="showTab('swadhyay', this)">✍️ Study Notes</button>
                     <button class="tab-btn" onclick="showTab('quiz', this)">❓ Quiz</button>
                 </div>`;
             html += `<div class="section active" id="reading"><div class="reading-text">`;
@@ -1335,20 +1355,19 @@
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
             
-            // Swadhyay tab click thay tyare data load karo
             if (tabId === 'swadhyay') {
                 const currentUnit = allPages[currentIndex]?.data?.id;
                 if (currentUnit) loadSwadhyayData(currentUnit);
             }
         }
 
-        // ===== SWADHYAY POTHI DATA LOAD =====
+        // ===== STUDY NOTES DATA LOAD =====
         function loadSwadhyayData(unitNumber) {
             const container = document.getElementById('swadhyay-content');
             if (!container) return;
             
             if (typeof swadhyayData === 'undefined') {
-                container.innerHTML = `<p style="text-align:center; color:var(--text-light); padding:20px;">Swadhyay data load nathi thayu. (swadhyay-data.js file check karo)</p>`;
+                container.innerHTML = `<p style="text-align:center; color:var(--text-light); padding:20px;">Study Notes data load nathi thayu. (swadhyay-data.js file check karo)</p>`;
                 return;
             }
             
@@ -1358,14 +1377,14 @@
                 container.innerHTML = `
                     <div style="padding:20px; text-align:center; color:var(--text-light);">
                         <h3>${data ? data.unitTitle : 'Unit ' + unitNumber}</h3>
-                        <p>Maaf karo, aa unit nu Swadhyay Pothi data haju add nathi thayu.</p>
+                        <p>Maaf karo, aa unit nu Study Notes data haju add nathi thayu.</p>
                     </div>`;
                 return;
             }
 
             let htmlContent = `
                 <h2 style="color:var(--primary); margin-bottom:20px; font-weight:700; text-align:center;">
-                    ${data.unitTitle} — Swadhyay Pothi
+                    ${data.unitTitle}
                 </h2>
             `;
 

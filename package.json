@@ -1,6 +1,6 @@
 {
   "name": "kids-activity-app",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Std 7 English Learning App for Dravy — Learn, Practice, Play!",
   "author": "Dravy's Dad",
   "main": "main.js",
@@ -34,9 +34,10 @@
       "app.html",
       "index.html",
       "data.js",
+      "grammar-data.js",
       "grammar-data-part1.js",
       "grammar-data-part2.js",
-      "swadhyay-data.js",
+      "study-notes-data.js",
       "icon.png",
       "package.json"
     ]

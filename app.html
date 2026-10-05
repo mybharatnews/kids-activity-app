@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Dravy's English Learning App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
@@ -34,8 +35,6 @@
             display: flex;
             transition: background 0.3s, color 0.3s;
         }
-
-        /* ===== WATERMARK — badha pages par "DRAVY" ===== */
         body::before {
             content: "DRAVY";
             position: fixed;
@@ -57,7 +56,6 @@
             color: rgba(255, 217, 61, 0.09);
             text-shadow: 0 0 40px rgba(255, 217, 61, 0.05);
         }
-
         .sidebar {
             width: 280px;
             background: linear-gradient(180deg, #0077b6, #03045e);
@@ -813,7 +811,7 @@
             const result = document.getElementById(`practice-result-${idx}`);
             const allBtns = document.querySelectorAll(`#practice-options-${idx} .practice-opt`);
             allBtns.forEach(b => b.disabled = true);
-            
+
             if (selected === correct) {
                 btn.classList.add('correct');
                 result.innerHTML = '🎉 Shabash Dravy! Sahi jawab!';
@@ -966,13 +964,13 @@
             const grammarCount = typeof grammarData !== 'undefined' ? grammarData.length : 0;
             const progress = grammarCount > 0 ? Math.round((viewedTopics.length / grammarCount) * 100) : 0;
             const dayIdx = new Date().getDate() % grammarCount;
-            const wordOfDay = grammarData[dayIdx]?.rules[0];
-            
+            const wordOfDay = grammarData[dayIdx] ? grammarData[dayIdx].rules[0] : null;
+
             content.innerHTML = `
                 <div class="content-box">
                     <h2 style="color:var(--primary); text-align:center;">Welcome, Dravy! 👋</h2>
                     <p style="text-align:center; color:var(--text-light); margin-top:10px;">Chalo Dravy, aaje navu shikhiye!</p>
-                    
+
                     ${wordOfDay ? `
                     <div style="background:linear-gradient(135deg, #ffd93d, #ffc107); padding:15px; border-radius:15px; margin:15px 0; text-align:center;">
                         <div style="font-size:13px; color:#03045e; font-weight:bold;">🌟 Word of the Day</div>
@@ -980,7 +978,7 @@
                         <div style="font-size:18px; color:#d62828;">${wordOfDay.desc}</div>
                         <button class="speak-btn" onclick="speak('${wordOfDay.word.replace(/'/g, "\\'")}')" style="margin-top:8px;">🔊</button>
                     </div>` : ''}
-                    
+
                     <div class="progress-bar" style="max-width:400px; margin:15px auto;">
                         <div class="progress-fill" style="width:${progress}%;"></div>
                     </div>
@@ -1016,7 +1014,7 @@
                             <div class="number">${suppCount}</div>
                         </div>
                     </div>
-                    
+
                     <!-- ✅ DISCLAIMER -->
                     <div style="
                         background: #fff9c4;
@@ -1030,10 +1028,10 @@
                         text-align: left;
                         line-height: 1.6;
                     ">
-                        <strong>⚠️ Disclaimer:</strong> Aa ek private study aid chhe, 
-                        GSEB athva GSSTB dwara official nathi. Tamara prashno official 
-                        GSSTB textbook par aadharit chhe. Tamara jawab ane explanation 
-                        original chhe. Aa app fakt shikshan na hetu mate free of cost 
+                        <strong>⚠️ Disclaimer:</strong> Aa ek private study aid chhe,
+                        GSEB athva GSSTB dwara official nathi. Tamara prashno official
+                        GSSTB textbook par aadharit chhe. Tamara jawab ane explanation
+                        original chhe. Aa app fakt shikshan na hetu mate free of cost
                         share karvama aavi chhe.
                     </div>
                 </div>`;
@@ -1221,7 +1219,7 @@
                 const allAnswers = g.practice.map(x => x.a).filter(a => a !== p.a);
                 const shuffledWrong = allAnswers.sort(() => Math.random() - 0.5).slice(0, 3);
                 const options = [p.a, ...shuffledWrong].sort(() => Math.random() - 0.5);
-                
+
                 html += `<div class="practice-item">
                     <div style="font-size:18px; font-weight:bold; color:var(--primary); margin-bottom:10px;">
                         ${idx + 1}. ${p.q}
@@ -1354,10 +1352,10 @@
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
             btn.classList.add('active');
-            
-            // Study Notes tab click thay tyare data load karo
+
             if (tabId === 'study-notes') {
-                const currentUnit = allPages[currentIndex]?.data?.id;
+                const page = allPages[currentIndex];
+                const currentUnit = page && page.data ? page.data.id : null;
                 if (currentUnit) loadStudyNotesData(currentUnit);
             }
         }
@@ -1366,12 +1364,12 @@
         function loadStudyNotesData(unitNumber) {
             const container = document.getElementById('study-notes-content');
             if (!container) return;
-            
+
             if (typeof studyNotesData === 'undefined') {
                 container.innerHTML = `<p style="text-align:center; color:var(--text-light); padding:20px;">Study Notes data load nathi thayu. (study-notes-data.js file check karo)</p>`;
                 return;
             }
-            
+
             const data = studyNotesData[unitNumber];
 
             if (!data || !data.sections || data.sections.length === 0) {

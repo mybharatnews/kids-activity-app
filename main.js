@@ -1,4 +1,4 @@
-const { app, BrowserWindow, session, shell } = require('electron');
+const { app, BrowserWindow, session } = require('electron');
 const path = require('path');
 
 // ===== Cache folder set (permission fix) =====
@@ -12,8 +12,6 @@ app.commandLine.appendSwitch('disable-software-rasterizer');
 app.commandLine.appendSwitch('disable-gpu-compositing');
 app.commandLine.appendSwitch('disable-dev-shm-usage');
 app.commandLine.appendSwitch('no-sandbox');
-app.commandLine.appendSwitch('use-gl', 'swiftshader');
-app.commandLine.appendSwitch('in-process-gpu');
 
 // ===== SECURITY: Security warnings disable =====
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
@@ -21,7 +19,9 @@ process.env['ELECTRON_DISABLE_SECURITY_WARNINGS'] = 'true';
 // ===== SECURITY: Single instance lock (ek j window khule) =====
 const gotTheLock = app.requestSingleInstanceLock();
 if (!gotTheLock) {
+    // Biji instance chalu thay to turant band karo
     app.quit();
+    process.exit(0);
 } else {
     app.on('second-instance', (event, commandLine, workingDirectory) => {
         const windows = BrowserWindow.getAllWindows();
@@ -29,13 +29,14 @@ if (!gotTheLock) {
             const win = windows[0];
             if (win.isMinimized()) win.restore();
             win.focus();
+        } else {
+            createWindow();
         }
     });
 }
 
 // ===== SECURITY: External links block =====
 app.on('web-contents-created', (event, contents) => {
-    // Navigation block karo (fakt local file allowed)
     contents.on('will-navigate', (event, navigationUrl) => {
         const parsedUrl = new URL(navigationUrl);
         if (parsedUrl.protocol !== 'file:') {
@@ -44,13 +45,11 @@ app.on('web-contents-created', (event, contents) => {
         }
     });
 
-    // New window open block karo
     contents.setWindowOpenHandler(({ url }) => {
         console.log('Blocked new window:', url);
         return { action: 'deny' };
     });
 
-    // WebView block karo
     contents.on('will-attach-webview', (event, webPreferences, params) => {
         delete webPreferences.preload;
         webPreferences.nodeIntegration = false;
@@ -87,12 +86,12 @@ function createWindow() {
         title: "Dravy's English Learning App",
         icon: path.join(__dirname, 'icon.png'),
         backgroundColor: '#f0f4f8',
-        show: false, // Pehla hide, pachi ready thay tyare show
+        show: false,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
-            devTools: true,         // ⚠️ Development ma true, production ma false karo
-            webSecurity: true,      // Web security enable
+            devTools: false,
+            webSecurity: true,
             allowRunningInsecureContent: false,
             experimentalFeatures: false,
             enableRemoteModule: false,
@@ -100,16 +99,13 @@ function createWindow() {
         }
     });
 
-    // Menu bar hide karo
     win.setMenuBarVisibility(false);
     win.setAutoHideMenuBar(true);
 
-    // Zoom disable karo (kids accidental zoom na kare)
     win.webContents.on('did-finish-load', () => {
         win.webContents.setZoomFactor(1);
         win.webContents.setVisualZoomLevelLimits(1, 1);
-        
-        // Mouse wheel + Ctrl thi zoom disable
+
         win.webContents.executeJavaScript(`
             document.addEventListener('wheel', (e) => {
                 if (e.ctrlKey) e.preventDefault();
@@ -117,43 +113,33 @@ function createWindow() {
         `);
     });
 
-    // Zoom shortcuts disable
     win.webContents.on('before-input-event', (event, input) => {
-        // Ctrl + / Ctrl - / Ctrl 0 disable
         if (input.control && (input.key === '+' || input.key === '-' || input.key === '0' || input.key === '=')) {
             event.preventDefault();
         }
-        // F5 / Ctrl+R (reload) disable
         if (input.key === 'F5' || (input.control && input.key.toLowerCase() === 'r')) {
             event.preventDefault();
         }
-        // F12 (DevTools) disable
         if (input.key === 'F12') {
             event.preventDefault();
         }
-        // Ctrl+Shift+I (DevTools) disable
         if (input.control && input.shift && input.key.toLowerCase() === 'i') {
             event.preventDefault();
         }
     });
 
-    // ✅ MAIN APP LOAD KARO (app.html)
     win.loadFile('app.html');
 
-    // Ready thay tyare show karo
     win.once('ready-to-show', () => {
         win.show();
-    });
-
-    // Fullscreen shortcuts disable (F11)
-    win.on('enter-full-screen', () => {
-        // Koi action nahi — kids ne fullscreen thi bahar nikalo
     });
 }
 
 // ===== APP READY =====
 app.whenReady().then(() => {
-    createWindow();
+    if (gotTheLock) {
+        createWindow();
+    }
 
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
